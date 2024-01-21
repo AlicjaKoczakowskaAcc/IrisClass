@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iris Flower Classification</title>
+    <style>
+        body {
+            background-color: #e6ecf0;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #2e86c1;
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 0;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        label {
+            color: #5a5a5a;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #2e86c1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .about-section {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .scatter-plots {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .scatter-plot {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Iris Flower Classification</h1>
+
+    <form method="POST">
+        <label for="SepalLengthCm">Sepal Length (cm):</label>
+        <input type="number" id="SepalLengthCm" name="SepalLengthCm" step="0.01" required>
+
+        <label for="SepalWidthCm">Sepal Width (cm):</label>
+        <input type="number" id="SepalWidthCm" name="SepalWidthCm" step="0.01" required>
+
+        <label for="PetalLengthCm">Petal Length (cm):</label>
+        <input type="number" id="PetalLengthCm" name="PetalLengthCm" step="0.01" required>
+
+        <label for="PetalWidthCm">Petal Width (cm):</label>
+        <input type="number" id="PetalWidthCm" name="PetalWidthCm" step="0.01" required>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    <div class="about-section">
+        <h2>About Iris Flower Classification</h2>
+        <p>This web application uses a machine learning model to classify iris flowers based on their sepal and petal measurements. Enter the measurements, click "Predict," and the application will provide a classification along with probability charts.</p>
+    </div>
+
+    {% if error_message %}
+        <p style="color: #e74c3c; font-weight: bold;">{{ error_message }}</p>
+    {% endif %}
+    {% if setosa %}
+        <p style="color: #2e86c1; font-weight: bold;">{{ setosa }}</p>
+    {% elif versicolor %}
+        <p style="color: #e74c3c; font-weight: bold;">{{ versicolor }}</p>
+    {% elif virginica %}
+        <p style="color: #3498db; font-weight: bold;">{{ virginica }}</p>
+    {% endif %}
+
+    {% if plot_url %}
+        <img src="data:image/png;base64,{{ plot_url }}" alt="Model Prediction Chart">
+    {% endif %}
+
+
+    <script>
+        // Interactivity here
+    </script>
+</body>
+</html>
