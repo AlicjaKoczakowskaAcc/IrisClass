@@ -5,7 +5,7 @@ IrisClassifier
 Iris Flower Classification Web App
 ### Krótki opis ze wskazaniem celów: 
 Aplikacja internetowa wykorzystująca model uczenia maszynowego do klasyfikacji kwiatów irysów na podstawie pomiarów działek kielicha i płatków. Celem jest dostarczenie użytkownikom interaktywnego narzędzia do przewidywania gatunku irysa oraz wizualizacji cech wejściowych i prognoz modelu.
-##Prawa autorskie:
+## Prawa autorskie:
 Oprogramowanie jest udostępnione na zasadach otwartego źródła (open source) zgodnie z licencją MIT. Każdy może używać, modyfikować i rozpowszechniać kod źródłowy, pod warunkiem zachowania informacji o prawach autorskich.
 ## Specyfikacja wymagań:
 
@@ -18,24 +18,24 @@ Oprogramowanie jest udostępnione na zasadach otwartego źródła (open source) 
 | 5             | Predict           | Przycisk do przewidywania gatunku irysa na podstawie wprowadzonych danych | Funkcjonalne   |
 | 6             | Input Validation  | Walidacja wejścia, sprawdzenie poprawności wprowadzonych danych | Niefunkcjonalne |
 
-##Architektura systemu/oprogramowania:
+## Architektura systemu/oprogramowania:
 
-###Architektura rozwoju – stos technologiczny:
+### Architektura rozwoju – stos technologiczny:
 Python (backend)
 Flask (web framework)
 Scikit-learn (machine learning)
 Pandas (data manipulation)
 Matplotlib (data visualization)
 
-###Architektura uruchomieniowa – stos technologiczny:
+### Architektura uruchomieniowa – stos technologiczny:
 Web Browser (front-end)
 Flask (back-end)
 Python (interpreter)
 Machine learning model (DecisionTreeClassifier)
 
-##Testy:
-a. Scenariusz testów:
-Test poprawności klasyfikacji:
+## Testy:
+Scenariusz testów:
+###Test poprawności klasyfikacji:
 
 Kroki:
 Wprowadź poprawne wartości dla SepalLengthCm, SepalWidthCm, PetalLengthCm, PetalWidthCm.
