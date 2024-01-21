@@ -35,7 +35,7 @@ Machine learning model (DecisionTreeClassifier)
 
 ## Testy:
 Scenariusz testów:
-###Test poprawności klasyfikacji:
+### Test poprawności klasyfikacji:
 
 Kroki:
 Wprowadź poprawne wartości dla SepalLengthCm, SepalWidthCm, PetalLengthCm, PetalWidthCm.
