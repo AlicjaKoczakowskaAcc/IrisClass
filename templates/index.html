@@ -76,6 +76,11 @@
             margin-right: 20px;
         }
 
+         .center-text {
+        text-align: center;
+        margin-top: 20px; /* Dodaj margines na górę, aby odseparować elementy */
+    }
+
 
 
 
@@ -114,15 +119,15 @@
         <p style="color: #e74c3c; font-weight: bold;">{{ error_message }}</p>
     {% endif %}
     {% if setosa %}
-        <p style="color: #2e86c1; font-weight: bold;">{{ setosa }}</p>
+        <p class="center-text" style="color: #2e86c1; font-weight: bold;">{{ setosa }}</p>
     {% elif versicolor %}
-        <p style="color: #e74c3c; font-weight: bold;">{{ versicolor }}</p>
+        <p class="center-text" style="color: #e74c3c; font-weight: bold;">{{ versicolor }}</p>
     {% elif virginica %}
-        <p style="color: #3498db; font-weight: bold;">{{ virginica }}</p>
+        <p class="center-text" style="color: #3498db; font-weight: bold;">{{ virginica }}</p>
     {% endif %}
 
     {% if accuracy_score %}
-        <p style="color: #2ecc71; font-weight: bold;">Accuracy Score: {{ accuracy_score }}</p>
+        <p class="center-text" style="color: #2ecc71; font-weight: bold;">Accuracy Score: {{ accuracy_score }}</p>
     {% endif %}
 
     {% if plot_url %}

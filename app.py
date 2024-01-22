@@ -12,21 +12,24 @@ import pandas as pd
 
 data = pd.read_csv('iris.csv')
 
+#Inicjalizuje obiekt Flask, który będzie obsługiwał aplikację.
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def basic():
+    #Sprawdza, czy formularz został przesłany metodą POST, a następnie pobiera dane wejściowe z formularza.
     if request.method == 'POST':
         sepal_length = float(request.form['SepalLengthCm'])
         sepal_width = float(request.form['SepalWidthCm'])
         petal_length = float(request.form['PetalLengthCm'])
         petal_width = float(request.form['PetalWidthCm'])
 
+        #Przygotowuje dane wejściowe dla modelu i przewiduje wartość za pomocą wcześniej wytrenowanego modelu.
         y_pred = [[sepal_length, sepal_width, petal_length, petal_width]]
         trained_model = main.training_model()
         prediction_value = trained_model.predict(y_pred)
 
-
+        #Tworzy tekstowy komunikat na podstawie przewidywanej klasy irysa.
         setosa = 'The flower is classified as Setosa'
         versicolor = 'The flower is classified as Versicolor'
         virginica = 'The flower is classified as Virginica'
@@ -71,10 +74,12 @@ def basic():
         plt.ioff()
         pairplot_img.close()
 
-        # Accuracy score
+        # Oblicza dokładność modelu za pomocą walidacji krzyżowej.
         accuracy_score = cross_val_score(main.Iris_clf, main.Xt, main.Yt, cv=3, scoring='accuracy').mean() * 100
 
-        return render_template('index.html', result_text=result_text, plot_url=plot_url,pairplot_url=pairplot_url,accuracy_score=accuracy_score)
+        #return render_template('index.html', result_text=result_text, plot_url=plot_url,pairplot_url=pairplot_url,accuracy_score=accuracy_score)
+        return render_template('index.html', result_text=result_text, plot_url=plot_url, pairplot_url=pairplot_url,
+                               accuracy_score=accuracy_score, setosa=setosa, versicolor=versicolor, virginica=virginica)
 
     return render_template('index.html')
 
