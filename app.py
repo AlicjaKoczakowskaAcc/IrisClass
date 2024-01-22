@@ -1,8 +1,16 @@
+
 from flask import Flask, render_template, request
+from sklearn.model_selection import cross_val_score
+from sklearn.tree import export_graphviz
+import pydotplus
 import main
 import matplotlib.pyplot as plt
 import io
 import base64
+import seaborn as sns
+import pandas as pd
+
+data = pd.read_csv('iris.csv')
 
 app = Flask(__name__)
 
@@ -54,7 +62,19 @@ def basic():
         plot_url = base64.b64encode(img.getvalue()).decode()
         img.close()
 
-        return render_template('index.html', result_text=result_text, plot_url=plot_url)
+        # Dodaje wykres sns.pairplot
+        iris_pairplot = sns.pairplot(data.drop('Id', axis=1), hue='Species')
+        pairplot_img = io.BytesIO()
+        iris_pairplot.savefig(pairplot_img, format='png')
+        pairplot_img.seek(0)
+        pairplot_url = base64.b64encode(pairplot_img.getvalue()).decode()
+        plt.ioff()
+        pairplot_img.close()
+
+        # Accuracy score
+        accuracy_score = cross_val_score(main.Iris_clf, main.Xt, main.Yt, cv=3, scoring='accuracy').mean() * 100
+
+        return render_template('index.html', result_text=result_text, plot_url=plot_url,pairplot_url=pairplot_url,accuracy_score=accuracy_score)
 
     return render_template('index.html')
 

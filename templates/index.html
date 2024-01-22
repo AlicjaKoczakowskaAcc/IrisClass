@@ -76,6 +76,10 @@
             margin-right: 20px;
         }
 
+
+
+
+
         p {
             color: #333;
             line-height: 1.6;
@@ -117,9 +121,23 @@
         <p style="color: #3498db; font-weight: bold;">{{ virginica }}</p>
     {% endif %}
 
+    {% if accuracy_score %}
+        <p style="color: #2ecc71; font-weight: bold;">Accuracy Score: {{ accuracy_score }}</p>
+    {% endif %}
+
     {% if plot_url %}
         <img src="data:image/png;base64,{{ plot_url }}" alt="Model Prediction Chart">
     {% endif %}
+
+    {% if pairplot_url %}
+    <div class="scatter-plots">
+        <div class="scatter-plot">
+            <h2>Pairplot</h2>
+            <img src="data:image/png;base64,{{ pairplot_url }}" alt="Pairplot">
+        </div>
+    </div>
+    {% endif %}
+
 
 
     <script>
